@@ -1,13 +1,13 @@
 # RC Frequency Response Analysis
 
 ## Overview
-This project investigates the frequency response of an RC low-pass filter using theoretical modeling, simulation, and experimental measurements. The objective is to understand how resistance (R), capacitance (C), and frequency (ω) affect the system behavior.
+This project investigates the frequency response of an RC low-pass filter using theoretical modeling, simulation, and experimental measurements. The objective is to analyze how resistance (R), capacitance (C), and frequency (ω) affect system behavior.
 
 ---
 
 ## Theory
 
-The transfer function of the RC circuit is given by:
+The transfer function of the RC circuit is:
 
 T(jω) = 1 / (1 + jωRC)
 
@@ -16,83 +16,90 @@ The cutoff frequency is defined as:
 ω₀ = 1 / RC
 
 At the cutoff frequency:
-- The magnitude drops to approximately -3 dB
-- The phase shift is approximately -45°
+- Magnitude drops to approximately -3 dB
+- Phase shift is approximately -45°
 
 ---
 
-## Methods
+## Simulation (Python)
 
-The project consists of three main parts:
+The system behavior was simulated using Python to generate Bode plots.
 
-- Analytical derivation of the transfer function
-- Simulation of frequency response using Python (Bode plots)
-- Experimental data collection and processing
-- Comparison between theoretical and experimental results
+### Bode Plot
+![Bode](bode_te.png)
 
----
+### Effect of Resistance (R)
+![R Variation](bode_te_mf_R.png)
 
-## Results
-
-The experimental results show strong agreement with the theoretical predictions.
-
-- The magnitude remains close to 0 dB at low frequencies and decreases as frequency increases
-- The phase shifts gradually from 0° to approximately -90°
-- The cutoff frequency can be identified from both magnitude and phase characteristics
-
-Although the cutoff point is not explicitly marked in the figures, it can be determined from the transition region where the magnitude approaches -3 dB and the phase approaches -45°.
+### Effect of Capacitance (C)
+![C Variation](bode_te_mf_C.png)
 
 ---
 
-## Figures
+## Interactive Simulation
+
+An interactive visualization was implemented using sliders to dynamically adjust R and C values.
+
+- Real-time update of magnitude and phase
+- Automatic cutoff frequency tracking
+- Visual indication of -3 dB and -45° points
+
+This allows intuitive exploration of how system parameters influence the frequency response.
+
+---
+
+## Experimental Results
+
+Experimental data was collected and processed to obtain frequency response curves.
+
+---
+
+## Comparison
 
 ### Configuration 1 (R = 5100 Ω, C = 47 nF)
 
-**Magnitude Comparison**
-![Comparison 1 Magnitude](comparison1_mf.png)
-
-**Phase Comparison**
-![Comparison 1 Phase](comparison1_pf.png)
+![Magnitude 1](comparison1_mf.png)
+![Phase 1](comparison1_pf.png)
 
 ---
 
 ### Configuration 2 (R = 1000 Ω, C = 220 nF)
 
-**Magnitude Comparison**
-![Comparison 2 Magnitude](comparison2_mf.png)
-
-**Phase Comparison**
-![Comparison 2 Phase](comparison2_pf.png)
+![Magnitude 2](comparison2_mf.png)
+![Phase 2](comparison2_pf.png)
 
 ---
 
-## Code
+## Results and Discussion
 
-The simulation and analysis were implemented in Python.
+- The system behaves as a first-order low-pass filter
+- The magnitude decreases at approximately -20 dB/decade
+- The phase shifts from 0° to -90°
+- The cutoff frequency matches theoretical prediction
 
-Main file:
-- `code/main.py`
+Although the cutoff point is not explicitly marked in experimental figures, it can be identified from:
+- Magnitude approaching -3 dB
+- Phase approaching -45°
 
-Modules:
+Small deviations at higher frequencies are due to non-ideal experimental conditions.
+
+---
+
+## Code Structure
+
+The project is implemented in Python with modular structure:
+
+- `code/main.py` – main execution file
 - `code/bode_plot.py` – Bode plot generation
-- `code/exp_plot.py` – Experimental vs theoretical comparison
-- `code/transfer_function.py` – Transfer function definition
+- `code/transfer_function.py` – transfer function model
+- `code/some.py` – interactive simulation (slider-based)
 
 ---
 
 ## Data
 
-Experimental data is available in:
+Experimental data:
 - `Data.xlsx`
-
----
-
-## Key Findings
-
-- The RC circuit behaves as a first-order low-pass filter
-- The cutoff frequency matches the theoretical prediction (ω₀ = 1/RC)
-- Experimental results validate the theoretical model
-- Small deviations at high frequency are due to practical non-ideal effects
 
 ---
 
