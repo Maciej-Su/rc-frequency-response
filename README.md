@@ -1,109 +1,73 @@
 # RC Frequency Response Analysis
 
-## Overview
-This project investigates the frequency response of an RC low-pass filter using theoretical modeling, simulation, and experimental measurements. The objective is to analyze how resistance (R), capacitance (C), and frequency (ω) affect system behavior.
+This project investigates the frequency response of an RC low-pass filter using theoretical modeling, Python simulation, and experimental validation.
 
 ---
 
 ## Theory
 
-The transfer function of the RC circuit is:
+The transfer function of the RC circuit is given by:
 
 T(jω) = 1 / (1 + jωRC)
 
+where:
+- R is the resistance
+- C is the capacitance
+- ω is the angular frequency (rad/s)
+
 The cutoff frequency is defined as:
 
-ω₀ = 1 / RC
+ωc = 1 / (RC)
 
-At the cutoff frequency:
-- Magnitude drops to approximately -3 dB
-- Phase shift is approximately -45°
+At this frequency:
+- The magnitude drops to approximately -3 dB
+- The phase shift is approximately -45°
+
+This confirms that the circuit behaves as a first-order linear time-invariant (LTI) system with a roll-off rate of -20 dB/decade.
+
+---
+
+## Methods
+
+The project consists of three main components:
+
+- Analytical derivation of the transfer function
+- Python-based simulation of Bode plots
+- Experimental measurement and validation
 
 ---
 
 ## Simulation (Python)
 
-The system behavior was simulated using Python to generate Bode plots.
+Theoretical Bode plots were generated using Python to visualize:
 
-### Bode Plot
-![Bode](bode_te.png)
+- Magnitude response
+- Phase response
+- Influence of R and C on system behavior
 
-### Effect of Resistance (R)
-![R Variation](bode_te_mf_R.png)
+### Parameter Analysis
 
-### Effect of Capacitance (C)
-![C Variation](bode_te_mf_C.png)
-
----
-
-## Interactive Simulation
-
-An interactive visualization was implemented using sliders to dynamically adjust R and C values.
-
-- Real-time update of magnitude and phase
-- Automatic cutoff frequency tracking
-- Visual indication of -3 dB and -45° points
-
-This allows intuitive exploration of how system parameters influence the frequency response.
+- Increasing R shifts the cutoff frequency to lower values
+- Increasing C has the same effect
+- The shape of the curve remains consistent, confirming first-order behavior
 
 ---
 
-## Experimental Results
+## Interactive Visualization (Advanced Feature)
 
-Experimental data was collected and processed to obtain frequency response curves.
+An interactive tool is implemented using Python to dynamically explore the effect of circuit parameters on the frequency response.
 
----
+By adjusting the resistance (R) and capacitance (C) values using sliders, the Bode magnitude and phase plots update in real time.
 
-## Comparison
+This allows:
 
-### Configuration 1 (R = 5100 Ω, C = 47 nF)
+- Visualization of how the cutoff frequency shifts with changing parameters
+- Direct verification of the relationship ωc = 1 / (RC)
+- Better understanding of system sensitivity to parameter variations
 
-![Magnitude 1](comparison1_mf.png)
-![Phase 1](comparison1_pf.png)
+This interactive approach extends beyond static analysis and reflects practical engineering tools used in system design.
 
----
+To run the interactive tool:
 
-### Configuration 2 (R = 1000 Ω, C = 220 nF)
-
-![Magnitude 2](comparison2_mf.png)
-![Phase 2](comparison2_pf.png)
-
----
-
-## Results and Discussion
-
-- The system behaves as a first-order low-pass filter
-- The magnitude decreases at approximately -20 dB/decade
-- The phase shifts from 0° to -90°
-- The cutoff frequency matches theoretical prediction
-
-Although the cutoff point is not explicitly marked in experimental figures, it can be identified from:
-- Magnitude approaching -3 dB
-- Phase approaching -45°
-
-Small deviations at higher frequencies are due to non-ideal experimental conditions.
-
----
-
-## Code Structure
-
-The project is implemented in Python with modular structure:
-
-- `code/main.py` – main execution file
-- `code/bode_plot.py` – Bode plot generation
-- `code/transfer_function.py` – transfer function model
-- `code/some.py` – interactive simulation (slider-based)
-
----
-
-## Data
-
-Experimental data:
-- `Data.xlsx`
-
----
-
-## Author
-
-Shaokang Su  
-Silesian University of Technology
+```bash
+python interactive_plot.py
